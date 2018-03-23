@@ -20,7 +20,7 @@ error_reporting(0);
 	<img src="images/pastmovies.jpg" alt = "Past Movies" style = "width:150px;height:150px;" />
 </a>
 <h1>
-	Hello <?php echo $_SESSION["user"] ?> !
+	Hello <?php echo $_SESSION["fname"] ?> !
 </h1>
 
 </body>
