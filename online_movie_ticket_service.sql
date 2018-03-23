@@ -15,7 +15,8 @@ CREATE TABLE `customer` (
   `Email` char(255) DEFAULT NULL,
   `CCnum` bigint(16) NOT NULL,
   `CCexpiryMonth` tinyint(2) NOT NULL,
-  `CCexpiryYear` tinyint(2) NOT NULL
+  `CCexpiryYear` tinyint(2) NOT NULL,
+  `admin` boolean not null
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `movie_supplier` (
