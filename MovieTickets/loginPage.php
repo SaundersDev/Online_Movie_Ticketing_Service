@@ -3,11 +3,12 @@
 <head>
 </head>
 <body> 
-<?php $name = $password = $error = "";
+<?php 
+$name = $password = $error = "";
 //database connection
 $servername = "localhost";
 $username = "root";
-//$password = "";
+$password = "";
 $dbname = "MovieTix";
 $conn =  mysqli_connect($servername, $username, $password, $dbname);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = $row["fname"];
     if($row["admin"] == 0){ //customer
         
-        echo '<form id="goodUser" method="post" action="Customer/homepage.php"/>';
+        echo '<form id="goodUser" method="post" action="Customer/homepage.php">';
         echo '<input type="hidden" name="fname" value = '.$fname.' />';
         echo '<input type="hidden" name="username" value = '.$name.'/>';
         echo '</form>';
