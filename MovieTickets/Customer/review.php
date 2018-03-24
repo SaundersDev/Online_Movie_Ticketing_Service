@@ -29,9 +29,9 @@ $_SESSION["username"] = 'pgibs';
 	$productionCompany = $row["productioncompany"];
 	$plotSynopsis = $row["plotsynopsis"];
 ?>
-<h2>
+<h1>
 	Write a Review
-</h2>
+</h1>
 
 <textarea maxlength="255" name="reviewBox" rows="4" cols="50" form="reviewForm"> 
 </textarea>
