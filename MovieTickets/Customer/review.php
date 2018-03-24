@@ -2,7 +2,6 @@
 session_start(); 
 error_reporting(0);
 $movie = $_POST["movie"];
-require_once('connectDatabase.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +10,9 @@ require_once('connectDatabase.php');
   <link rel="stylesheet" href="review.css">
 </head>
 <body>
+
+<?php require_once('connectDatabase.php'); ?>
+
 <a href ="homepage.php">
 	<img src="images/home.png" alt="Home Page" style="width:50px;height:50px;"/>
 </a>
