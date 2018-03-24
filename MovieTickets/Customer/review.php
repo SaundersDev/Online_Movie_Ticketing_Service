@@ -1,8 +1,11 @@
 <?php
 session_start(); 
-error_reporting(0);
-$movie = $_POST["movie"];
-require_once('connectDatabase.php');
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "MovieTix";
+$conn =  mysqli_connect($servername, $username, $password, $dbname);
+$_SESSION["username"] = 'pgibs';
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +32,17 @@ require_once('connectDatabase.php');
 <h2>
 	Write a Review
 </h2>
-<textarea maxlength="255" id="reviewBox" rows="4" cols="50" > 
-	
+
+<textarea maxlength="255" name="reviewBox" rows="4" cols="50" form="reviewForm"> 
 </textarea>
+<form action="processReview.php" id="reviewForm" method="post">
+	<input type="hidden" name="movie" value="<?php echo $movie ?>">
+	<input type="range" min="0" max="5" value="2.5" class="slider" step="0.1" id="movieRating" name="rating">
+	<input type="submit" value="Submit Review">
+</form>
+
 <div id="slidecontainer">
-  <input type="range" min="0" max="5" value="2.5" class="slider" step="0.1" id="movieRating">
-  <p>Rating: <span id="num"></span></p>
-  <button type="button" onclick="submitReview()">Submit Review</button> 
+  <p>Rating: <span id="num" name="rating"></span></p>
 </div>
 <div  id="movieDetails" >
 	<br>
@@ -53,27 +60,6 @@ var output = document.getElementById("num");
 output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
-}
-
-function submitReview(){
-
-	var mysql = require('mysql');
-	var con = mysql.createConnection({
-	  host: "localhost",
-	  user: "root",
-	  password: "",
-	  database: "MovieTix"
-	});
-
-	con.connect(function(err) {
-	  if (err) throw err;
-	  console.log("Connected!");
-	  var sql = "INSERT INTO reviews (text, score, reviewermovietitle, reviewername) VALUES ('hello', '5', 'Black Panther', 'pgibs')";
-	  con.query(sql, function (err, result) {
-	    if (err) throw err;
-	    console.log("1 record inserted");
-	  });
-	});
 }
 
 </script>
