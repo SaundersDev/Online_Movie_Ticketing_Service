@@ -2,11 +2,7 @@
 session_start(); 
 error_reporting(0);
 $movie = $_POST["movie"];
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "MovieTix";
-$conn =  mysqli_connect($servername, $username, $password, $dbname);
+require_once('connectDatabase.php');
 ?>
 
 <!DOCTYPE html>

@@ -31,11 +31,7 @@
 	<input type="submit" name="submit" value="Sign Up">  
 </form>
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "MovieTix";
-	$conn =  mysqli_connect($servername, $username, $password, $dbname);
+	require_once('connectDatabase.php');
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$username = $_POST["username"];
 		$getUser = "SELECT username from customer where username = '$username'";
