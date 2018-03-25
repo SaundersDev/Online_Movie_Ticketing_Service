@@ -5,10 +5,8 @@ $username = "root";
 $password = "";
 $dbname = "MovieTix";
 $conn =  mysqli_connect($servername, $username, $password, $dbname);
-$_SESSION["fname"] = "Patrick";
-$_SESSION["username"] = "pgibs";
 $user = $_SESSION["username"];
-$sql = "Select * from customer where username = 'pgibs'";
+$sql = "Select * from customer where username = '$user'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -30,7 +28,7 @@ $year = $row["CCexpiryYear"];
 <html>
 <body>
 
-<a href ="homepage.php">
+<a href ="customerDashboard.php">
 	<img src="images/home.png" alt="Home Page" style="width:50px;height:50px;"/>
 </a> 
 <h1>
