@@ -5,13 +5,18 @@ $username = "root";
 $password = "";
 $dbname = "MovieTix";
 $conn =  mysqli_connect($servername, $username, $password, $dbname);
-$user = $_SESSION["username"];
 $showing = $_GET["showing"];
 $getDetails = "Select movietitle, starttime from theatercomplex_movie_showing inner join showing where showing.id = theatercomplex_movie_showing.showingid and showing.id = $showing";
+$getSeatsAvail = "Select numseatsavailable from showing where id = '$showing'";
+
 $result = mysqli_query($conn, $getDetails);
 $row = mysqli_fetch_assoc($result);
 $movietitle = $row["movietitle"];
 $time = $row["starttime"];
+
+$result = mysqli_query($conn, $getSeatsAvail);
+$row = mysqli_fetch_assoc($result);
+$seatsAvail = $row["numseatsavailable"];
 ?>
 
 
@@ -23,7 +28,7 @@ $time = $row["starttime"];
 at: <?php echo "$time" ?>
 
 <form method="post" action="processBuytix.php">
-	<input type="number" name="number" min="0">
+	<input type="number" name="number" min="0" max="<?php echo $seatsAvail ?>">
 	<input type="hidden" name="showing" value="<?php echo $showing ?>">
 	<input type="submit" name="submit" value="Buy Tickets">
 </form>
