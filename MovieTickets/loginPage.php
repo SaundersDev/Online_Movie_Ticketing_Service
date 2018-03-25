@@ -1,16 +1,18 @@
+<?php
+session_start(); 
+error_reporting(0);
+?>
 <!DOCTYPE HTML>  
 <html>
 <head>
 </head>
 <body> 
 <?php 
+	require_once('connectDatabase.php');
+
 $name = $password = $error = "";
 //database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "MovieTix";
-$conn =  mysqli_connect($servername, $username, $password, $dbname);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = $_POST["name"];
   $password = $_POST["password"];

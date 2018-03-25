@@ -2,7 +2,6 @@
 <html>
 
 <head>
-	require_once('connectDatabase.php');
 </head>
 
 <body>

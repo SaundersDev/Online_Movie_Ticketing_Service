@@ -2,12 +2,13 @@
 <html>
 
 <head>
-	require_once('connectDatabase.php');
+
 </head>
 
 <body>
 
 <?php 
+	require_once('connectDatabase.php');
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
