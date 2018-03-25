@@ -1,0 +1,58 @@
+Cut from "theaters.php"
+
+// Don't think I need to actually have a thing to add a new theater complex, or to be able to delete a theater complex from the db
+
+// Add New: ////////////////////////////////////////////////////////////////////////////////////////
+
+	$newName = $_POST["name"]; 
+	
+	if($newName){
+		$newS = $_POST["street"];
+		$newC = $_POST["city"];
+		$newPC = $_POST["pcode"];
+		$newPN = $_POST["pnum"];
+		$sql = "INSERT INTO theater_complex (name, street, city, PostalCode, PhoneNumber) 
+		VALUES ('$newName', '$newS', '$newC', '$newPC', '$newPN')";
+		if (mysqli_query($conn, $sql)) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+	}
+//^ this part is at the top, in the if loop that checks when there is a POST 
+	..........
+// the part below would be at the very bottom of the file 
+
+</form>
+<h1>Add New Theater Complex to Database:</h1>
+<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+
+		<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">  
+		*Name: <input type="text" name="name">
+		<br><br>
+		Street: <input type="text" name="street">
+		<br><br>
+		City: <input type="text" name="city">
+		<br><br>
+		Postal Code: <input type="text" name="pcode">
+		<br><br>
+		*Phone Number: <input type="text" name="pnum">
+		<br><br>
+		<input type="submit" name="submit" value="Submit">  
+</form>
+
+// Delete Button: ////////////////////////////////////////////////////////////////////////////////////////
+
+if ($del) {
+		$sql = "DELETE FROM theater_complex WHERE name = '$del'";
+		if ($conn->query($sql) === TRUE) {
+		echo "Record deleted successfully";
+		} else {
+		echo "Error deleting record: " . $conn->error;
+		}
+}
+//^ this part is at the top, in the if loop that checks when there is a POST 
+.........
+// the part below would be right in the echo statement that declares the select button next to each tuple 
+
+<button type="submit" name="delete" value="'.$row["name"].'">Delete</button>
