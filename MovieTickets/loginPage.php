@@ -40,12 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
 <h2>Movie Tickets</h2>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">  
-  Name: <input type="text" name="name">
+  <label>Name: <input type="text" name="name">
   <br><br>
-  Password: <input type="text" name="password">
+  <label>Password: <input type="text" name="password">
   <br><br>
   <input type="submit" name="submit" value="Submit">  
 </form>
@@ -57,6 +56,43 @@ echo "<br>";
 <br>
   <a href ="signup.php">New User? Sign up here</a>
 
+
+
+<style>
+body{
+
+}
+body::after {
+  content: "";
+  background: url(Customer/images/login.jpg);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+img{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+h2 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 700px;
+    text-align: right;
+}
+  input{
+    display: inline-block;
+    float: right;
+  }
+
+</style>
 
 
 

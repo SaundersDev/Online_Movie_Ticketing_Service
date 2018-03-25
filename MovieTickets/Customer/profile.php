@@ -6,8 +6,8 @@ $password = "";
 $dbname = "MovieTix";
 $conn =  mysqli_connect($servername, $username, $password, $dbname);
 $_SESSION["fname"] = "Patrick";
-$_SESSION["name"] = "pgibs";
-$user = $_SESSION["name"];
+$_SESSION["username"] = "pgibs";
+$user = $_SESSION["username"];
 $sql = "Select * from customer where username = 'pgibs'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -38,21 +38,42 @@ $year = $row["CCexpiryYear"];
 	<br><br>
 </h1>
 <form method="post" action="processProfile.php">
-	First Name: <input type="text" name="fname" value="<?php echo $fname ?>" > <br><br>
-	Last Name: <input type="text" name="lname" value="<?php echo $lname ?>" ><br><br>
-	Address: <input type="text" name="street" value="<?php echo $street ?>" ><br><br>
-	City: <input type="text" name="city" value="<?php echo $city ?>" ><br><br>
-	Postal Code: <input type="text" name="postal" value="<?php echo $postal ?>" ><br><br>
-	Password: <input type="password" name="password" value="<?php echo $password ?>" ><br><br>
-	Phone Number: <input type="text" name="number" value="<?php echo $number ?>" ><br><br>
-	Email: <input type="text" name="email" value="<?php echo $email ?>" ><br><br>
-	<strong> Credit Card </strong> <br>
-	&emsp; CC Num: <input type="text" name="ccnum" value="<?php echo $ccnum ?>" ><br>
-	&emsp; CC Expiry Month: <input type="text" name="month" value="<?php echo $month ?>" ><br>
-	&emsp; CC Expiry Year: <input type="text" name="year" value="<?php echo $year ?>" ><br><br><br>
+	<label>First Name: <input type="text" name="fname" value="<?php echo $fname ?>" > <br><br>
+	<label>Last Name: <input type="text" name="lname" value="<?php echo $lname ?>" ><br><br>
+	<label>Address: <input type="text" name="street" value="<?php echo $street ?>" ><br><br>
+	<label>City: <input type="text" name="city" value="<?php echo $city ?>" ><br><br>
+	<label>Postal Code: <input type="text" name="postal" value="<?php echo $postal ?>" ><br><br>
+	<label>Password: <input type="password" name="password" value="<?php echo $password ?>" ><br><br>
+	<label>Phone Number: <input type="text" name="number" value="<?php echo $number ?>" ><br><br>
+	<label>Email: <input type="text" name="email" value="<?php echo $email ?>" ><br><br>
+	<strong> <credit>Credit Card </strong> 
+	&emsp; <label>CC Num: <input type="text" name="ccnum" value="<?php echo $ccnum ?>" ><br>
+	&emsp; <label>CC Expiry Month: <input type="text" name="month" value="<?php echo $month ?>" ><br>
+	&emsp; <label>CC Expiry Year: <input type="text" name="year" value="<?php echo $year ?>" ><br><br><br>
 	<input type="submit" name="submit" value="Update Profile">
 
 </form>
 </body>
+
+<style>
+credit{
+	display: inline-block;
+    float: left;
+    clear: left;
+    width: 390px;
+    text-align: right;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 500px;
+    text-align: right;
+}
+  input{
+    display: inline-block;
+    float: right;
+  }
+</style>
 
 </html>
