@@ -29,7 +29,7 @@ error_reporting(0);
 	<h2>Past Reservations</h2>
 	<?php
 	$user = $_SESSION["username"];
-	echo $user . "<br>";
+	//echo $user . "<br>";
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}	
@@ -50,7 +50,7 @@ error_reporting(0);
 	if ($result->num_rows > 0) {	
 		while($row = $result->fetch_assoc()) {
 			?>
-			<div id="container">
+			<div id="text" style= "height: 250px;" "width: 100%;>
 		
 			<?php echo '<a href ="customerMovie.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'&title='.$row["MovieTitle"].'" id = "home">'
 			?>	
@@ -69,7 +69,7 @@ error_reporting(0);
 			
 			
 			<?php
-			$review = "SELECT Text, Score, ReviewerMovieTitle, ReviewerName FROM reviews WHERE ReviewerName = 'jboi' and ReviewerMovieTitle = 'Finding Nemo';";
+			$review = "SELECT Text, Score, ReviewerMovieTitle, ReviewerName FROM reviews WHERE ReviewerName = 'jboi' and ReviewerMovieTitle = '$title';";
 			$result2 = mysqli_query($conn, $review);
 			
 			if($result2->num_rows > 0){

@@ -50,7 +50,7 @@ error_reporting(0);
 	if ($result->num_rows > 0) {	
 		while($row = $result->fetch_assoc()) {
 			?>
-			<div id="container">
+			<div id="text" style= "height: auto;" "width: 100%;>
 		
 			<?php echo '<a href ="customerMovie.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'&title='.$row["MovieTitle"].'" id = "home">'
 			?>	
@@ -58,7 +58,7 @@ error_reporting(0);
 			</a>
 			
 			<?php 
-			echo "" . $row["MovieTitle"]. 
+			echo "<br>" . $row["MovieTitle"]. 
 			 "<br>" . $row["Rating"].
 			 " <br>Run Time: " . $row["RunningTime"]. 
 			 "<br>Director: " . $row["Director"] .

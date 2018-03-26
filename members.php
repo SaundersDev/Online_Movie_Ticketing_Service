@@ -6,11 +6,19 @@ error_reporting(0);
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="styling.css">
   <h1> List of all members:
   <br>
   </h1>
 </head>
 <body>
+	<div class="header" style= "height: auto; width: 100%;">
+		<li><?php echo '<a href ="AdminHomepage.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>AdminHomepage</a></li>
+		<li><?php echo '<a href ="members.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">'?>Manage Members</a></li>
+		<li><?php echo '<a href ="theaters.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>Manage Theater Complexes</a></li>
+		<li><?php echo '<a href ="movie.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>Manage Movies</a></li>		
+		<li><?php echo '<a href ="login.php" id = "home">'?>Logout</a></li>
+	</div>	
 <?php 
 $name = $password = $error = "";
 //database connection
@@ -19,6 +27,7 @@ $username = "root";
 $password = "";
 $dbname = "MovieTix";
 $conn =  mysqli_connect($servername, $username, $password, $dbname);
+
 
 $sql = "SELECT username, fname, lname FROM customer";
 $result = mysqli_query($conn, $sql);
@@ -62,9 +71,6 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_free_result($result);
 ?>
-<br>
-<a href = "AdminHomepage.php">
-	Back To Homepage
-</a>
+
 </body>
 </html>

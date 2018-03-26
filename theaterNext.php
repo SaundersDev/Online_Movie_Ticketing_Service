@@ -6,15 +6,23 @@ error_reporting(0);
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="styling.css">
 <?php 
 $nameTC= $_SESSION["name"];
 
-	echo '<h1> ~ '.$_SESSION["name"].' Theater Complex~';
+	echo '<h1> '.$_SESSION["name"].' Theater Complex';
     echo '<br></h1>';
 
 ?>
 </head>
 <body>
+<div class="header" style= "height: auto; width: 100%;">
+		<li><?php echo '<a href ="AdminHomepage.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>AdminHomepage</a></li>
+		<li><?php echo '<a href ="members.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">'?>Manage Members</a></li>
+		<li><?php echo '<a href ="theaters.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>Manage Theater Complexes</a></li>
+		<li><?php echo '<a href ="movie.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>Manage Movies</a></li>		
+		<li><?php echo '<a href ="login.php" id = "home">'?>Logout</a></li>
+	</div>		
 <?php
 $name = $password = $error = "";
 //database connection
@@ -106,6 +114,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">  
+
 <?php  
 echo '[This Establishment]:<br><br>';
 echo '<button type="submit" name="update" value="1">update</button>';
@@ -120,8 +129,6 @@ if ($temp==3){ echo '-->new value: '; echo '<input type="text" name="pcode">'; }
 echo '<br><button type="submit" name="update" value="4">update</button>';
 echo "o Phone Number: " .$row["PhoneNumber"];
 if ($temp==4){ echo '-->new value: '; echo '<input type="text" name="pnum">'; }
-
-echo '<br><br> [List of Facilities]: <br>';
 
 $sql = "SELECT TheaterNumber, MaxSeats, ScreenSize FROM theater";
 $result = mysqli_query($conn, $sql);
@@ -155,6 +162,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "0 results";
 }
+echo '</th><th>';
 echo '<input type="submit" name="add" value="Add New Showroom">';
 	if ($yo=="2"){
 		echo '-->Enter new fields below, then click "Add New Showroom" again<br>';
@@ -165,12 +173,6 @@ echo '<input type="submit" name="add" value="Add New Showroom">';
 ?>
 </table>
 <br>
-<a href = "theaters.php">
-	Back To List of Theater Complexes
-</a>
-<br>
-<a href = "AdminHomepage.php">
-	Back To Homepage
-</a>
+
 </body>
 </html>

@@ -7,7 +7,7 @@ error_reporting(0);
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="homepage.css">
+  	<link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 <body>
 <?php 
@@ -18,27 +18,20 @@ error_reporting(0);
 	// had to comment this^ out for some reason to keep the session username after a refresh?....
 	$_SESSION["username"] = $uname; }
 		?>
-<a href ="AdminHomepage.php" id = "home">
-	<img src="images/home.png" alt="Home Page" style="width:150px;height:150px;"/>
-</a>
-<br><br>
-<a href = "members.php">
-	Manage Members
-</a>
-<br><br>
-<a href = "theaters.php">
-	Manage Theater Complexes
-</a>
-<br><br>
-<a href = "movie.php" >
-	Manage Movies
-</a>
+	<div class="header" style= "height: auto; width: 100%;">
+		<li><?php echo '<a href ="AdminHomepage.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>AdminHomepage</a></li>
+		<li><?php echo '<a href ="members.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">'?>Manage Members</a></li>
+		<li><?php echo '<a href ="theaters.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>Manage Theater Complexes</a></li>
+		<li><?php echo '<a href ="movie.php?username='.$_SESSION["username"].'&fname='.$_SESSION["fname"].'" id = "home">' ?>Manage Movies</a></li>		
+		<li><?php echo '<a href ="login.php" id = "home">'?>Logout</a></li>
+	</div>		
+
 <br><br><br>
 
 <h1>
 	Hello <?php echo $_SESSION["fname"] ?> ! (admin)
 	<br><br>
-	USERNAME IS <?php echo $_SESSION["username"] ?> 
+	Username is <?php echo $_SESSION["username"] ?> 
 </h1>
 
 </body>
