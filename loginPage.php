@@ -34,11 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script type='text/javascript'> document.getElementById('goodUser').submit(); </script>";
     }
     else{ //admin
-        echo '<form id="goodUser" method="post" action="AdminHomepage.php">';
-        echo '<input type="hidden" name="fname" value = '.$fname.' >';
-        echo '<input type="hidden" name="username" value = '.$name.'>';
-        echo '</form>';
-        echo "<script type='text/javascript'> document.getElementById('goodUser').submit(); </script>";
+
     }
   }
 }

@@ -23,5 +23,5 @@ $username = $_SESSION["username"];
 $sql = "update customer set fname='$fname', lname='$lname', street='$street', city='$city', postalcode='$postal', password='$password' 
 		, phonenumber='$number', email='$email', ccnum='$ccnum', ccexpirymonth='$month', ccexpiryyear='$year' where username='$username'";
 mysqli_query($conn, $sql);
-header('Location: customerDashboard.php');
+header('Location: homepage.php');
 ?>

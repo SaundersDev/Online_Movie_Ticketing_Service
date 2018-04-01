@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 $servername = "localhost";
@@ -6,22 +5,75 @@ $username = "root";
 $password = "";
 $dbname = "MovieTix";
 $conn =  mysqli_connect($servername, $username, $password, $dbname);
+$_SESSION["fname"] = "Patrick";
+$_SESSION["username"] = "pgibs";
+$user = $_SESSION["username"];
+$sql = "Select * from customer where username = 'pgibs'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
-$fname = $_POST["fname"];
-$lname = $_POST["lname"];
-$street = $_POST["street"];
-$city = $_POST["city"];
-$postal = $_POST["postal"];
-$password = $_POST["password"];
-$number = $_POST["number"];
-$email = $_POST["email"];
-$ccnum = $_POST["ccnum"];
-$month = $_POST["month"];
-$year = $_POST["year"];
-$username = $_SESSION["username"];
+$fname = $row["Fname"];
+$lname = $row["Lname"];
+$street = $row["Street"];
+$city = $row["City"];
+$postal = $row["PostalCode"];
+$password = $row["Password"];
+$number = $row["PhoneNumber"];
+$email = $row["Email"];
+$ccnum = $row["CCnum"];
+$month = $row["CCexpiryMonth"];
+$year = $row["CCexpiryYear"];
 
-$sql = "update customer set fname='$fname', lname='$lname', street='$street', city='$city', postalcode='$postal', password='$password' 
-		, phonenumber='$number', email='$email', ccnum='$ccnum', ccexpirymonth='$month', ccexpiryyear='$year' where username='$username'";
-mysqli_query($conn, $sql);
-header('Location: customerDashboard.php');
 ?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<a href ="homepage.php">
+	<img src="images/home.png" alt="Home Page" style="width:50px;height:50px;"/>
+</a> 
+<h1>
+	Hello <?php echo $_SESSION["fname"] ?>, this is your profile. 
+	<br><br>
+</h1>
+<form method="post" action="processProfile.php">
+	<label>First Name: <input type="text" name="fname" value="<?php echo $fname ?>" > <br><br>
+	<label>Last Name: <input type="text" name="lname" value="<?php echo $lname ?>" ><br><br>
+	<label>Address: <input type="text" name="street" value="<?php echo $street ?>" ><br><br>
+	<label>City: <input type="text" name="city" value="<?php echo $city ?>" ><br><br>
+	<label>Postal Code: <input type="text" name="postal" value="<?php echo $postal ?>" ><br><br>
+	<label>Password: <input type="password" name="password" value="<?php echo $password ?>" ><br><br>
+	<label>Phone Number: <input type="text" name="number" value="<?php echo $number ?>" ><br><br>
+	<label>Email: <input type="text" name="email" value="<?php echo $email ?>" ><br><br>
+	<strong> <credit>Credit Card </strong> 
+	&emsp; <label>CC Num: <input type="text" name="ccnum" value="<?php echo $ccnum ?>" ><br>
+	&emsp; <label>CC Expiry Month: <input type="text" name="month" value="<?php echo $month ?>" ><br>
+	&emsp; <label>CC Expiry Year: <input type="text" name="year" value="<?php echo $year ?>" ><br><br><br>
+	<input type="submit" name="submit" value="Update Profile">
+
+</form>
+</body>
+
+<style>
+credit{
+	display: inline-block;
+    float: left;
+    clear: left;
+    width: 390px;
+    text-align: right;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 500px;
+    text-align: right;
+}
+  input{
+    display: inline-block;
+    float: right;
+  }
+</style>
+
+</html>

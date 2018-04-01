@@ -4,10 +4,9 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "MovieTix";
-$conn =  mysqli_connect($servername, $username, $password, $dbname); 
-error_reporting(0);
+$conn =  mysqli_connect($servername, $username, $password, $dbname);
+$_SESSION["username"] = 'pgibs';
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +14,7 @@ error_reporting(0);
   <link rel="stylesheet" href="review.css">
 </head>
 <body>
-<a href ="customerDashboard.php">
+<a href ="homepage.php">
 	<img src="images/home.png" alt="Home Page" style="width:50px;height:50px;"/>
 </a>
 <?php 
